@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- jquery依赖 -->
+    <script src="http://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+    <!-- bootstrap依赖 -->
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- jquery.page-bootstrap分页插件 -->
+    <script src="js/jquery.page-bootstrap.js"></script>
+
+</head>
+
+<body>
+    <!-- 展示内容 -->
+    <!-- <div class="table"></div> -->
+    <!-- 分页容器 -->
+    <ul class="pagination" id="paginator"></ul>
+</body>
+
+<script>
+    // 初始化分页插件，使用时可以先对后端进行一次请求得到参数，然后对插件进行初始化
+    $("#paginator").createPage({
+        pageCount: 50, //总页数
+        current: 1, //当前页数
+        // 回调函数（每次点击换页的回调函数），@param p 请求的页数
+        backFn: function(p) {
+            console.log(p);
+        }
+    });
+</script>
+<style>
+    /*
+    由于jquery.page.js每次换页都对分页进行删除并重新添加，所以bootstrap样式无法显示出当前在哪个页面
+    使用css对bootstrap的样式进行覆盖，实现当前页数的span背景色为灰色
+     */
+    
+    li span.current {
+        display: inline-block;
+        background-color: #ddd;
+    }
+</style>
+
+</html>
